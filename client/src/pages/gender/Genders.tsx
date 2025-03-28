@@ -41,7 +41,7 @@ const Genders = () => {
           <AddGenderForm
             onGenderAdded={(message) => {
               handleShowAlertMessage(message, true, true);
-              setRefreshGenders(refreshGenders);
+              setRefreshGenders(!refreshGenders);
             }}
           />
         </div>

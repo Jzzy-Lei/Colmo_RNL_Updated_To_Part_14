@@ -4,7 +4,7 @@ import GenderServices from "../../services/GenderServices";
 import ErrorHandler from "../../handler/ErrorHandler";
 import Spinner from "../Spinner";
 
-interface GenderTableProps {
+interface GendersTableProps {
   refreshGenders: boolean;
 }
 

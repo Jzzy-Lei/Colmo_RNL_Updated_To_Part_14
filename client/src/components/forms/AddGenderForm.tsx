@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import GenderServices from "../../services/GenderServices";
 import ErrorHandler from "../../handler/ErrorHandler";
 import GenderFieldErrors from "../../interfaces/GenderFieldErrors";
+import Spinner from "../Spinner";
 
 interface AddGenderFormProps {
   onGenderAdded: (message: string) => void;
@@ -85,21 +86,20 @@ const AddGenderForm = ({ onGenderAdded }: AddGenderFormProps) => {
               <p className="text-danger">{state.errors.gender[0]}</p>
             )}
           </div>
-
           <div className="d-flex justify-content-end">
-            {state.loadingStore ? (
-              <button className="btn btn-primary" type="button" disabled>
-                <span
-                  className="spinner-border spinner-border-sm"
-                  aria-hidden="true"
-                ></span>
-                <span role="status">Loading...</span>
-              </button>
-            ) : (
-              <button type="submit" className="btn btn-primary">
-                Save
-              </button>
-            )}
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={state.loadingStore}
+            >
+              {state.loadingStore ? (
+                <>
+                  <Spinner /> Loading...
+                </>
+              ) : (
+                "Save Now"
+              )}
+            </button>
           </div>
         </div>
       </form>
