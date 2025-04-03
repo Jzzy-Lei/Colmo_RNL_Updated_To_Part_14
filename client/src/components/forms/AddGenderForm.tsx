@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import GenderServices from "../../services/GenderServices";
+import GenderService from "../../services/GenderService";
 import ErrorHandler from "../../handler/ErrorHandler";
 import GenderFieldErrors from "../../interfaces/GenderFieldErrors";
-import Spinner from "../Spinner";
+import SpinnerSmall from "../SpinnerSmall";
 
 interface AddGenderFormProps {
   onGenderAdded: (message: string) => void;
@@ -31,7 +31,7 @@ const AddGenderForm = ({ onGenderAdded }: AddGenderFormProps) => {
       loadingStore: true,
     }));
 
-    GenderServices.storeGender(state)
+    GenderService.storeGender(state)
       .then((res) => {
         if (res.status === 200) {
           setState((prevState) => ({
@@ -86,6 +86,7 @@ const AddGenderForm = ({ onGenderAdded }: AddGenderFormProps) => {
               <p className="text-danger">{state.errors.gender[0]}</p>
             )}
           </div>
+
           <div className="d-flex justify-content-end">
             <button
               type="submit"
@@ -94,10 +95,10 @@ const AddGenderForm = ({ onGenderAdded }: AddGenderFormProps) => {
             >
               {state.loadingStore ? (
                 <>
-                  <Spinner /> Loading...
+                  <SpinnerSmall /> Loading...
                 </>
               ) : (
-                "Save Now"
+                "Save"
               )}
             </button>
           </div>
