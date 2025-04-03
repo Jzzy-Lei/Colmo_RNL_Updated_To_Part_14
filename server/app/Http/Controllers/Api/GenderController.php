@@ -60,7 +60,7 @@ class GenderController extends Controller
             'is_deleted' => true
         ]);
 
-        return response()->jason ([
+        return response()->json ([
             'message' => 'Gender Successfully Deleted.'
         ], 200);
     }
