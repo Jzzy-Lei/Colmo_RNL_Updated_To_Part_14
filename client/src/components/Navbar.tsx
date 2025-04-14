@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const menuItems = [
     {
+      route: "/",
       title: "Genders",
     },
     {
+      route: "/users",
       title: "Users",
     },
   ];
@@ -33,7 +35,7 @@ const Navbar = () => {
               {menuItems.map((menuItem, index) => (
                 // Each child in a list should have a unique "key" prop (Below)
                 <li className="nav-item" key={index}>
-                  <Link className="nav-link" to={"#"}>
+                  <Link className="nav-link" to={menuItem.route}>
                     {menuItem.title}
                   </Link>
                 </li>

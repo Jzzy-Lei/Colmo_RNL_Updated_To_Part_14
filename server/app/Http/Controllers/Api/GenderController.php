@@ -11,7 +11,7 @@ class GenderController extends Controller
     public function loadGenders()
     {
         $genders = Gender::where('tbl_genders.is_deleted', false)
-        ->get();
+            ->get();
         return response()->json([
             'genders' => $genders
         ], 200);
@@ -40,7 +40,8 @@ class GenderController extends Controller
         ], 200);
     }
 
-    public function updateGender(Request $request, Gender $gender) {
+    public function updateGender(Request $request, Gender $gender)
+    {
         $validated = $request->validate([
             'gender' => ['required', 'min:4', 'max:10']
         ]);
@@ -48,19 +49,19 @@ class GenderController extends Controller
         $gender->update([
             'gender' => $validated['gender']
         ]);
-        
+
         return response()->json([
             'message' => 'Gender Successfully Updated.'
         ], 200);
     }
 
-    public function destroyGender(Gender $gender) 
+    public function destroyGender(Gender $gender)
     {
         $gender->update([
             'is_deleted' => true
         ]);
 
-        return response()->json ([
+        return response()->json([
             'message' => 'Gender Successfully Deleted.'
         ], 200);
     }
