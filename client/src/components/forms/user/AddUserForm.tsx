@@ -108,10 +108,6 @@ const AddUserForm = ({
             "Unexpected status error while storing user: ",
             res.status
           );
-          console.error(
-            "Unexpected status error while creating user: ",
-            res.status
-          );
         }
       })
       .catch((error) => {
