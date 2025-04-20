@@ -4,12 +4,17 @@ import UserService from "../../../services/UserService";
 import ErrorHandler from "../../../handler/ErrorHandler";
 import Spinner from "../../Spinner";
 
-interface UsersTable {
+interface UsersTableProps {
   refreshUsers: boolean;
   onEditUser: (user: Users) => void;
+  onDeleteUser: (user: Users) => void;
 }
 
-const UsersTable = ({ refreshUsers, onEditUser }: UsersTable) => {
+const UsersTable = ({
+  refreshUsers,
+  onEditUser,
+  onDeleteUser,
+}: UsersTableProps) => {
   const [state, setState] = useState({
     loadingUsers: true,
     users: [] as Users[],
@@ -104,7 +109,11 @@ const UsersTable = ({ refreshUsers, onEditUser }: UsersTable) => {
                     >
                       Edit
                     </button>
-                    <button type="button" className="btn btn-danger">
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      onClick={() => onDeleteUser(user)}
+                    >
                       Delete Now?
                     </button>
                   </div>
@@ -125,3 +134,19 @@ const UsersTable = ({ refreshUsers, onEditUser }: UsersTable) => {
 };
 
 export default UsersTable;
+
+// LINE 23
+//   const handle
+// };
+
+// interface UsersTable {
+//   refreshUsers: boolean;
+//   onEditUser: (user: Users) => void;
+//   onDeleteUser: (user: Users) => void;
+// }
+
+// const UsersTable = ({ refreshUsers, onEditUser, onDeleteUser }: UsersTable) => {
+//   const [state, setState] = useState({
+//     loadingUsers: true,
+//     users: [] as Users[],
+//   });

@@ -3,7 +3,8 @@ import AxiosInstance from "../AxiosInstance";
 const UserService = {
     loadUsers: async () => {
         return AxiosInstance.get('/loadUsers')
-        .then((response) => response)
+        // RESPONSE CHECK
+        .then((respose) => respose) 
         .catch((error) => {
             throw error
         });
@@ -22,6 +23,14 @@ const UserService = {
             throw error;
         });
     },
+    destroyUser: async (userId: number) => {
+        return AxiosInstance.put(`/destroyUser/${userId}`)
+        .then((response) => response)
+        .catch((error) => {
+            throw error;
+        });
+    },
+
 };
 
 export default UserService;
