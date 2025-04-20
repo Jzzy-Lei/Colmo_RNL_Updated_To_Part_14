@@ -134,19 +134,3 @@ const UsersTable = ({
 };
 
 export default UsersTable;
-
-// LINE 23
-//   const handle
-// };
-
-// interface UsersTable {
-//   refreshUsers: boolean;
-//   onEditUser: (user: Users) => void;
-//   onDeleteUser: (user: Users) => void;
-// }
-
-// const UsersTable = ({ refreshUsers, onEditUser, onDeleteUser }: UsersTable) => {
-//   const [state, setState] = useState({
-//     loadingUsers: true,
-//     users: [] as Users[],
-//   });

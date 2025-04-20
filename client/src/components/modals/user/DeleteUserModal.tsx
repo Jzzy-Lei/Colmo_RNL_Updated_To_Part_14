@@ -17,16 +17,15 @@ const DeleteUserModal = ({
   onRefreshUsers,
   onClose,
 }: DeleteUserModalProps) => {
-  const submitFormRef = useRef<(() => void) | null>(null);
+  const submitFormRef = useRef<() => void | null>(null);
 
   const [refreshUsers, setRefreshUsers] = useState(false);
   const [loadingDestroy, setLoadingDestroy] = useState(false);
 
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isVisible, setIsVisible] = useState(false); // Fixed setter name
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Fixed function parameters
   const handleShowAlertMessage = (
     message: string,
     isSuccess: boolean,
@@ -40,7 +39,7 @@ const DeleteUserModal = ({
   const handleCloseAlertMessage = () => {
     setMessage("");
     setIsSuccess(false);
-    setIsVisible(false); // Fixed setter name
+    setIsVisible(false);
   };
 
   return (
@@ -64,21 +63,19 @@ const DeleteUserModal = ({
                   onClose={handleCloseAlertMessage}
                 />
               </div>
-              <p className="fs-4">Are you sure to delete this one?</p>
+              <p className="fs-4">Are you sure to delete this user?</p>
               <DeleteUserForm
                 user={user}
                 setSubmitForm={submitFormRef}
                 setLoadingDestroy={setLoadingDestroy}
                 onDeletedUser={() => {
-                  // Pass a proper message string here
                   handleShowAlertMessage(
-                    "User deleted successfully",
+                    "User Successfully Deleted",
                     true,
                     true
                   );
-                  const newRefresh = !refreshUsers;
-                  setRefreshUsers(newRefresh);
-                  onRefreshUsers(newRefresh); // Pass updated value
+                  setRefreshUsers(!refreshUsers);
+                  onRefreshUsers(refreshUsers);
                 }}
               />
             </div>
